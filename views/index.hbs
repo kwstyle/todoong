@@ -4,3 +4,61 @@
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+<script type="text/babel">
+
+
+    let Component = React.createClass({
+        propTypes: {
+            name: React.PropTypes.string.isRequired
+        },
+        getDefaultProps: function() {
+            return ({
+                name: "Park"
+            });
+        },
+        render: function () {
+            return (
+                    <span>ddddd {this.props.name} </span>
+            )
+        }
+    });
+
+    let TextAreaCounter = React.createClass({
+        propTypes: {
+            text: React.PropTypes.string.isRequired
+        },
+        getInitialState: function() {
+            return {
+                text : this.props.text
+            }
+        },
+        update: function(event) {
+            console.log(event.target.value);
+            this.setState({
+                text: event.target.value
+            })
+        },
+        render: function() {
+            let state = this.state;
+            return (
+                    <div>
+                    <textarea name="test" id="" cols="30" rows="10" onChange={this.update}>
+                        {state.text}
+                    </textarea>
+                        <span>{state.text.length}</span>
+                    </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <h1 id="my-heading">
+                <span>Test22</span>
+                <Component name="test"/>
+                <Component  />
+                <TextAreaCounter text="sdkfjslf" />
+            </h1>,
+            document.getElementById('app')
+    );
+</script>
